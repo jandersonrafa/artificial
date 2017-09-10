@@ -1,0 +1,21 @@
+<div class="container">
+    <h2> View Galaxies </h2>
+    - viewGalaxies.html
+    <ul>
+        <li ng-repeat="galaxy in galaxies | filter:name">{{galaxy.name}} , {{galaxy.distance}}
+            <br>
+            <img src="{{galaxy.name}}.png" alt="{{galaxy.name}}" height="200" width="200">
+            <br>
+        </li>
+    </ul>
+    <br />
+    <p>Add a new galaxy in the input box:</p>
+
+    <form ng-submit="add()">
+        Name: <input type="text" ng-model="name" placeholder="Enter name here"> <br> Distance: <input type="text" ng-model="distance"
+            placeholder="Enter distance here"> <br> A new galaxy: {{name}} {{distance}} <br>
+        <input type="submit" value="Add" />
+    </form>
+    <br />
+    <a href="#/home">Back to Home</a>
+</div>

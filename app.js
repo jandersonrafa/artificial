@@ -3,7 +3,7 @@ var express = require('express');
 var app = express(); 								// create our app w/ express
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 var port = process.env.PORT || 8080; 				// set the port
-var database = require('./config/database'); 			// load the database config
+var database = require('./server/config/database'); 			// load the database config
 
 var morgan = require('morgan'); 		// log requests to the console (express4)
 var bodyParser = require('body-parser'); 	// pull information from HTML POST (express4)
@@ -43,10 +43,12 @@ connect(mongoose, database.url)
 // mongoose.connect(database.url, { useMongoClient: true }); 	// connect to mongoDB database on modulus.io
 // db.ON('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use('/js', express.static(__dirname + '/public/javascript')); 				// set the static files location /public/img will be /img for users
+app.use('/js', express.static(__dirname + '/client/javascript')); 				// set the static files location /public/img will be /img for users
+app.use('/views', express.static(__dirname + '/client/views')); 				// set the static files location /public/img will be /img for users
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist/umd')); // redirect JS jQuery
+app.use('/js', express.static(__dirname + '/node_modules/angular')); // redirect JS jQuery
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use(morgan('dev')); 										// log every request to the console
 app.use(bodyParser.urlencoded({ 'extended': 'true' })); 			// parse application/x-www-form-urlencoded
@@ -55,7 +57,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 // routes ======================================================================
-require('./app/routes.js')(app);
+require('./server/routes.js')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
