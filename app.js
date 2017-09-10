@@ -43,7 +43,7 @@ connect(mongoose, database.url)
 // mongoose.connect(database.url, { useMongoClient: true }); 	// connect to mongoDB database on modulus.io
 // db.ON('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use('/js', express.static(__dirname + '/client/javascript')); 				// set the static files location /public/img will be /img for users
+app.use('/js', express.static(__dirname + '/client/js')); 				// set the static files location /public/img will be /img for users
 app.use('/views', express.static(__dirname + '/client/views')); 				// set the static files location /public/img will be /img for users
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery

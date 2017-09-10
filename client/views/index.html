@@ -1,0 +1,51 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Todo App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="/js/angular.min.js"></script>
+	<script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
+	<script type="text/javascript" src="/js/jquery.slim.min.js"></script>
+	<script type="text/javascript" src="/js/popper.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/index.js"></script>
+	<script type="text/javascript" src="/js/homeController.js"></script>
+
+	<!-- load bootstrap -->
+	<style>
+		html {
+			overflow-y: scroll;
+		}
+
+		body {
+			padding-top: 50px;
+		}
+
+		#todo-list {
+			margin-bottom: 30px;
+		}
+
+		#todo-form {
+			margin-bottom: 50px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div ng-app="mainApp">
+		<div ng-view></div>
+	</div>
+</body>
+
+</html>
