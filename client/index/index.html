@@ -13,13 +13,18 @@
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<!-- DEPENDENCIAS -->
 	<script type="text/javascript" src="/js/angular.min.js"></script>
-	<script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
+	<script type="text/javascript" src="/js/angular-ui-router.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.slim.min.js"></script>
 	<script type="text/javascript" src="/js/popper.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/index.js"></script>
-	<script type="text/javascript" src="/js/homeController.js"></script>
+	<script type="text/javascript" src="/index/index.js"></script>
+
+	<!-- DIRECTIVES -->
+	<script type="text/javascript" src="/directives/directives.js"></script>
+	<script type="text/javascript" src="/directives/home/homeController.js"></script>
 
 	<!-- load bootstrap -->
 	<style>
@@ -44,7 +49,8 @@
 
 <body>
 	<div ng-app="mainApp">
-		<div ng-view></div>
+		<teste></teste>
+		<div ui-view></div>
 	</div>
 </body>
 

@@ -5,29 +5,29 @@ mainApp.controller('homeController', function ($scope, $http) {
 
 	$scope.formData = {};
 
-	// when landing on the page, get all todos and show them
-	$http.get('api/todos').then(
+	// busca lista de home
+	$http.get('api/find').then(
 		function (response) {
-			$scope.todos = response.data;
+			$scope.listHome = response.data;
 		}, function (error) {
 			console.log('Error: ' + error.data);
 		});
 		
-		$scope.createTodo = function () {
-			$http.post('api/todos', $scope.formData).then(
+		$scope.createHome = function () {
+			$http.post('api/create', $scope.formData).then(
 				function (response) {
 					$scope.formData = {}; // clear the form so our user is ready to enter another
-					$scope.todos = response.data;
+					$scope.listHome = response.data;
 				console.log(response);
 			}, function (error) {
 				console.log('Error: ' + error.data);
 			});
 	}
 
-	$scope.deleteTodo = function (id) {
-		$http.delete('api/todos/' + id).then(
+	$scope.deleteHome = function (id) {
+		$http.delete('api/delete/' + id).then(
 			function (response) {
-				$scope.todos = response.data;
+				$scope.listHome = response.data;
 			}, function (error) {
 				console.log('Error: ' + error.data);
 			});
