@@ -1,3 +1,7 @@
+#############################
+### DIMITRI VIADO ##########
+#############################
+
 1) Criar conta em https://github.com/
 2) Instalar git https://git-scm.com/
 	Comandos basicos:
