@@ -1,29 +1,29 @@
 <div class="container">
 
     <div class="jumbotron text-center">
-        <h1>Criação de objetos home <span class="badge badge-secondary">{{ listHome.length }}</span></h1>
+        <h1>Criação de objetos vendaCentral <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
     </div>
-    <div id="home-list" class="row">
+    <div id="vendaCentral-list" class="row">
         <div class="col-sm-4 col-sm-offset-4">
             
-            <div class="checkbox" ng-repeat="home in listHome">
+            <div class="checkbox" ng-repeat="vendaCentral in listVendaCentral">
                 <label>
-						<input type="checkbox" ng-click="deleteHome(home._id)"> {{ home.dsEquipamentoPreferencial }}
+						<input type="checkbox" ng-click="deletevendaCentral(vendaCentral._id)"> {{ vendaCentral.dsEquipamentoPreferencia }}
 					</label>
             </div>
 
         </div>
     </div>
 
-    <div id="home-form" class="row">
+    <div id="vendaCentral-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
                 <div class="form-group">
                     <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever"
-                        ng-model="formData.text">
+                        ng-model="formData.dsEquipamentoPreferencia">
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createHome()">Add</button>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Add</button>
             </form>
         </div>
     </div>

@@ -1,6 +1,7 @@
 
 module.exports = function (app) {
     require('./homeController.js')(app);
+    require('./vendaCentralController.js')(app);
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
