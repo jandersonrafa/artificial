@@ -1,9 +1,9 @@
 <div class="container">
 
     <div class="jumbotron text-center">
-        <h1>Criação de objetos vendaCentral <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
+        <h1>Informação sobre a necessidade do Cliente <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
     </div>
-    <div id="vendaCentral-list" class="row">
+    <!--<div id="vendaCentral-list" class="row">
         <div class="col-sm-4 col-sm-offset-4">
             
             <div class="checkbox" ng-repeat="vendaCentral in listVendaCentral">
@@ -11,26 +11,97 @@
 						<input type="checkbox" ng-click="deletevendaCentral(vendaCentral._id)"> {{ vendaCentral.dsEquipamentoPreferencia }}
 					</label>
             </div>
+            
 
         </div>
-    </div>
+    </div>-->
 
     <div id="vendaCentral-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever"
-                        ng-model="formData.dsEquipamentoPreferencia">
+                    <label>Qual quantidade de funcionários que necessitam de aparelhos telefônicos?</label><br>
+                    <input type="radio"  name="Qpessoas" value="P12">12 pessoas
+                    <input type="radio"  name="Qpessoas" value="P32">32 pessoas
+                    <input type="radio"  name="Qpessoas" value="P64">64 pessoas
+                    <input type="radio"  name="Qpessoas" value="P128">128 pessoas
+                    <input type="radio"  name="Qpessoas" value="P+128">Mais que 128 pessoas
+                    <br><br>
+
+                    <label>Quantas ligações externas podem ser recebidas no mesmo instante?</label><br>
+                    <input type="radio"  name="Qligacoes" value="Q4">4
+                    <input type="radio"  name="Qligacoes" value="Q8">8
+                    <input type="radio"  name="Qligacoes" value="Q12">12
+                    <input type="radio"  name="Qligacoes" value="Q16">16
+                    <input type="radio"  name="Qligacoes" value="Q+16">Mais que 16
+                    <br><br>
+                    
+                    <label>Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)</label><br>
+                    <input type="radio"  name="Qacessos" value="ASim">Sim
+                    <input type="radio"  name="Qacessos" value="ANao">Não
+                    <br><br>
+
+                    <label>Qual marca de equipamento tem preferencia?</label><br>
+                    <input type="radio"  name="Marca" value="Intelbras">Intelbras
+                    <input type="radio"  name="Marca" value="Panasonic">Panasonic
+                    <input type="radio"  name="Marca" value="Digistar">Digistar
+                    <input type="radio"  name="Marca" value="SemPreferencia">Sem Preferência
+                    <br><br>
+
+                    <label>Prioriza a solução do problema independente do valor?</label><br>
+                    <input type="radio"  name="solucao" value="SSim">Sim
+                    <input type="radio"  name="solucao" value="SNao">Não
+                    <br><br>
+
+                    <label>Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?</label><br>
+                    <input type="radio"  name="Qtoques" value="QT6">Até 6
+                    <input type="radio"  name="Qtoques" value="QT10">Até 10
+                    <input type="radio"  name="Qtoques" value="QT30">Até 30
+                    <input type="radio"  name="Qtoques" value="QT+30">Mais que 30
+                    <br><br>
+                    
+                    <label>Atendente (Telefonista) possui computador?</label><br>
+                    <input type="radio"  name="atendente" value="ATSim">Sim
+                    <input type="radio"  name="atendente" value="ATNao">Não
+                    <br><br>
+
+                    <label>Necessita de secretária eletrônica para armazenar recados?</label><br>
+                    <input type="radio"  name="secretaria" value="SESim">Sim
+                    <input type="radio"  name="secretaria" value="SENao">Não
+                    <br><br>
+
+                    <label>Qual volume total de gravação de recados em tempo é necessário?</label><br>
+                    <input type="radio"  name="gravacao" value="H1">1 Hora
+                    <input type="radio"  name="gravacao" value="H2">2 Horas
+                    <input type="radio"  name="gravacao" value="H4">4 Horas
+                    <input type="radio"  name="gravacao" value="H+4">Mais que 4 Horas
+                    <br><br>
+
+                    <label>Possui ronda de funcionários?</label><br>
+                    <input type="radio"  name="Rfuncionario" value="FSim">Sim
+                    <input type="radio"  name="Rfuncionario" value="FNao">Não
+                    <br><br>
+
+                    <label>Existe muito fluxo de comunicação telefônica entre filiais?</label><br>
+                    <input type="radio"  name="comunicacao" value="CSim">Sim
+                    <input type="radio"  name="comunicacao" value="CNao">Não
+                    <br><br>
+
+                    <label>Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?</label><br>
+                    <input type="radio"  name="Ffuncionarios" value="FFSim">Sim
+                    <input type="radio"  name="Ffuncionarios" value="FFNao">Não
+                    <br><br>
+
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Add</button>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentralTelefonica()">Enviar</button>
             </form>
         </div>
     </div>
 
-    <div class="text-center text-muted">
+    <!--<div class="text-center text-muted">
         <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
         <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
-    </div>
+    </div>-->
 
 </div>
