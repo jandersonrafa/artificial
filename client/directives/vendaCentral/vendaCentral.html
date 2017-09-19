@@ -3,7 +3,7 @@
     <div class="jumbotron text-center">
         <h1>Informação sobre a necessidade do Cliente <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
     </div>
-    <!--<div id="vendaCentral-list" class="row">
+    <div id="vendaCentral-list" class="row">
         <div class="col-sm-4 col-sm-offset-4">
             
             <div class="checkbox" ng-repeat="vendaCentral in listVendaCentral">
@@ -14,91 +14,118 @@
             
 
         </div>
-    </div>-->
+    </div>
 
     <div id="vendaCentral-form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
                 <div class="form-group">
-                    <label>Qual quantidade de funcionários que necessitam de aparelhos telefônicos?</label><br>
-                    <input type="radio"  name="Qpessoas" value="P12">12 pessoas
-                    <input type="radio"  name="Qpessoas" value="P32">32 pessoas
-                    <input type="radio"  name="Qpessoas" value="P64">64 pessoas
-                    <input type="radio"  name="Qpessoas" value="P128">128 pessoas
-                    <input type="radio"  name="Qpessoas" value="P+128">Mais que 128 pessoas
-                    <br><br>
+                    <ia-input-radio 
+                        text="Qual quantidade de funcionários que necessitam de aparelhos telefônicos?"
+                        model="vendaCentral.tpQtdFuncionarios"
+                        name="tpQtdFuncionarios"
+                        options="[ 
+                                    { value:'P12', text:'12 pessoas'} 
+                                    , { value:'P32', text:'32 pessoas'} 
+                                    , { value:'P64', text:'64 pessoas'} 
+                                    , { value:'P128', text:'128 pessoas'} 
+                                    , { value:'P+128', text:'Mais que 128 pessoas'} 
+                                ]"
+                        >
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)?"
+                        model="vendaCentral.blDdr"
+                        name="blDdr">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Qual marca de equipamento tem preferencia?"
+                        model="vendaCentral.dsEquipamentoPreferencia"
+                        name="dsEquipamentoPreferencia"
+                        options="[ 
+                                    { text: 'Intelbras', value:'Intelbras'} 
+                                    , { text: 'Panasonic', value:'Panasonic'} 
+                                    , { text: 'Digistar', value:'Digistar'} 
+                                    , { text: 'Sem Preferencia', value:'Sem Preferencia'} 
+                                ]">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Prioriza a solução do problema independente do valor?"
+                        model="vendaCentral.blPriorizaSolucao"
+                        name="blPriorizaSolucao">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?"
+                        model="vendaCentral.tpQtdToquesSimultaneos"
+                        name="tpQtdToquesSimultaneos"
+                        options="[ 
+                                    { text: 'Até 6', value:'QT6'} 
+                                    , { text: 'Até 10', value:'QT10'} 
+                                    , { text: 'Até 30', value:'QT30'} 
+                                    , { text: 'Mais que 30', value:'QT+30'} 
+                                ]">
+                    </ia-input-radio>
 
-                    <label>Quantas ligações externas podem ser recebidas no mesmo instante?</label><br>
-                    <input type="radio"  name="Qligacoes" value="Q4">4
-                    <input type="radio"  name="Qligacoes" value="Q8">8
-                    <input type="radio"  name="Qligacoes" value="Q12">12
-                    <input type="radio"  name="Qligacoes" value="Q16">16
-                    <input type="radio"  name="Qligacoes" value="Q+16">Mais que 16
-                    <br><br>
+                    <ia-input-radio 
+                        text="Atendente (Telefonista) possui computador?"
+                        model="vendaCentral.blComputadorAtendente"
+                        name="blComputadorAtendente">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Necessita de secretária eletrônica para armazenar recados?"
+                        model="vendaCentral.blSecretariaEletronica"
+                        name="blSecretariaEletronica">
+                    </ia-input-radio>
+
+                    <ia-input-radio 
+                        text="Qual volume total de gravação de recados em tempo é necessário?"
+                        model="vendaCentral.tpQtdHorasGravacao"
+                        name="tpQtdHorasGravacao"
+                        options="[ 
+                                    { text: '1 Hora', value:'H1'} 
+                                    , { text: '2 Horas', value:'H2'} 
+                                    , { text: '3 Horas', value:'H4'} 
+                                    , { text: 'Mais que 4 horas', value:'H+4'} 
+                                ]">
+                    </ia-input-radio>
                     
-                    <label>Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)</label><br>
-                    <input type="radio"  name="Qacessos" value="ASim">Sim
-                    <input type="radio"  name="Qacessos" value="ANao">Não
-                    <br><br>
-
-                    <label>Qual marca de equipamento tem preferencia?</label><br>
-                    <input type="radio"  name="Marca" value="Intelbras">Intelbras
-                    <input type="radio"  name="Marca" value="Panasonic">Panasonic
-                    <input type="radio"  name="Marca" value="Digistar">Digistar
-                    <input type="radio"  name="Marca" value="SemPreferencia">Sem Preferência
-                    <br><br>
-
-                    <label>Prioriza a solução do problema independente do valor?</label><br>
-                    <input type="radio"  name="solucao" value="SSim">Sim
-                    <input type="radio"  name="solucao" value="SNao">Não
-                    <br><br>
-
-                    <label>Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?</label><br>
-                    <input type="radio"  name="Qtoques" value="QT6">Até 6
-                    <input type="radio"  name="Qtoques" value="QT10">Até 10
-                    <input type="radio"  name="Qtoques" value="QT30">Até 30
-                    <input type="radio"  name="Qtoques" value="QT+30">Mais que 30
-                    <br><br>
+                    <ia-input-radio 
+                    text="Possui ronda de funcionários?"
+                    model="vendaCentral.blFuncaoRonda"
+                    name="blFuncaoRonda">
+                </ia-input-radio>
+                
+                <ia-input-radio 
+                    text="Existe muito fluxo de comunicação telefônica entre filiais?"
+                    model="vendaCentral.blFluxoAltoFiliais"
+                    name="blFluxoAltoFiliais">
+                </ia-input-radio>
                     
-                    <label>Atendente (Telefonista) possui computador?</label><br>
-                    <input type="radio"  name="atendente" value="ATSim">Sim
-                    <input type="radio"  name="atendente" value="ATNao">Não
-                    <br><br>
-
-                    <label>Necessita de secretária eletrônica para armazenar recados?</label><br>
-                    <input type="radio"  name="secretaria" value="SESim">Sim
-                    <input type="radio"  name="secretaria" value="SENao">Não
-                    <br><br>
-
-                    <label>Qual volume total de gravação de recados em tempo é necessário?</label><br>
-                    <input type="radio"  name="gravacao" value="H1">1 Hora
-                    <input type="radio"  name="gravacao" value="H2">2 Horas
-                    <input type="radio"  name="gravacao" value="H4">4 Horas
-                    <input type="radio"  name="gravacao" value="H+4">Mais que 4 Horas
-                    <br><br>
-
-                    <label>Possui ronda de funcionários?</label><br>
-                    <input type="radio"  name="Rfuncionario" value="FSim">Sim
-                    <input type="radio"  name="Rfuncionario" value="FNao">Não
-                    <br><br>
-
-                    <label>Existe muito fluxo de comunicação telefônica entre filiais?</label><br>
-                    <input type="radio"  name="comunicacao" value="CSim">Sim
-                    <input type="radio"  name="comunicacao" value="CNao">Não
-                    <br><br>
-
-                    <label>Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?</label><br>
-                    <input type="radio"  name="Ffuncionarios" value="FFSim">Sim
-                    <input type="radio"  name="Ffuncionarios" value="FFNao">Não
-                    <br><br>
-
+                <ia-input-radio 
+                    text="Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?"
+                    model="vendaCentral.blFuncionarioRamalCelular"
+                    name="blFuncionarioRamalCelular">
+                </ia-input-radio>
+                        
+                <ia-input-radio 
+                    text="Quantas ligações externas podem ser recebidas no mesmo instante?"
+                    model="vendaCentral.tpQtdLigacoesConcorrentes"
+                    name="tpQtdLigacoesConcorrentes"
+                    options="[ 
+                                { text: 'Até 4', value:'QT4'} 
+                                , { text: 'Até 8', value:'QT8'} 
+                                , { text: 'Até 12', value:'QT12'} 
+                                , { text: 'Até 16', value:'QT16'} 
+                                , { text: 'Mais que 16', value:'QT+16'} 
+                            ]">
+                </ia-input-radio>
+                    
                 </div>
-
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentralTelefonica()">Enviar</button>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Enviar</button>
             </form>
         </div>
     </div>
-
+    
     <!--<div class="text-center text-muted">
         <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
         <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>

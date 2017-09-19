@@ -4,7 +4,7 @@ mainApp.controller('vendaCentralController', function ($scope, $http) {
 	const BASE_URL = 'venda-central';
 	$scope.message = "$scope.message : from vendaCentralController";
 
-	$scope.formData = {};
+	$scope.vendaCentral = {};
 
 	// busca lista de vendaCentral
 	$http.get(BASE_URL + '/api/find').then(
@@ -15,9 +15,10 @@ mainApp.controller('vendaCentralController', function ($scope, $http) {
 		});
 
 	$scope.createVendaCentral = function () {
-		$http.post(BASE_URL + '/api/create', $scope.formData).then(
+		console.log($scope.vendaCentral)
+		$http.post(BASE_URL + '/api/create', $scope.vendaCentral).then(
 			function (response) {
-				$scope.formData = {}; // clear the form so our user is ready to enter another
+				$scope.vendaCentral = {}; // clear the form so our user is ready to enter another
 				$scope.listVendaCentral = response.data;
 				console.log(response);
 			}, function (error) {

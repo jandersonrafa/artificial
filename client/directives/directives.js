@@ -18,3 +18,17 @@ mainApp.directive('vendaCentral', function ($interval) {
   }
 });
 
+mainApp.directive('iaInputRadio', function ($interval) {
+  return {
+    restrict: 'E',
+    templateUrl: PATH_DIRECTIVES + 'iaInputRadio/iaInputRadio.html',
+    controller: 'iaInputRadioController',
+    scope : {
+      text: "@text",
+      model: "=model",
+      options: "=?options",
+      name: "@name",
+    }
+  }
+});
+

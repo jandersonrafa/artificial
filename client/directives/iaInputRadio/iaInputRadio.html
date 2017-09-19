@@ -1,0 +1,8 @@
+<div>
+    {{ text }} <br>
+    <label ng-repeat="option in options">
+        <input type="radio" ng-value="option.value" ng-name="$parent.name" ng-model="$parent.model" >
+        {{ option.text }}
+    </label>
+</div>
+<br><br>
