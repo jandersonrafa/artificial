@@ -17,9 +17,9 @@
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Qual marca de equipamento tem preferencia?"
-                        model="vendaCentral.dsEquipamentoPreferencia"
-                        name="dsEquipamentoPreferencia"
-                        options="optionsDsEquipamentoPreferencia">
+                        model="vendaCentral.tpCentralPreferencia"
+                        name="tpCentralPreferencia"
+                        options="optionsTpCentralPreferencia">
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Prioriza a solução do problema independente do valor?"
@@ -68,16 +68,28 @@
                     model="vendaCentral.blFuncionarioRamalCelular"
                     name="blFuncionarioRamalCelular">
                 </ia-input-radio>
-                        
+                
                 <ia-input-radio 
-                    text="Quantas ligações externas podem ser recebidas no mesmo instante?"
-                    model="vendaCentral.tpQtdLigacoesConcorrentes"
-                    name="tpQtdLigacoesConcorrentes"
-                    options="optionsTpQtdLigacoesConcorrentes">
+                text="Quantas ligações externas podem ser recebidas no mesmo instante?"
+                model="vendaCentral.tpQtdLigacoesConcorrentes"
+                name="tpQtdLigacoesConcorrentes"
+                options="optionsTpQtdLigacoesConcorrentes">
+            </ia-input-radio>
+            <br>
+            <hr>
+
+                <ia-input-radio 
+                    text="Equipamento adequado:"
+                    model="vendaCentral.tpCentralIndicada"
+                    name="tpCentralIndicada"
+                    options="optionsTpCentralIndicada">
                 </ia-input-radio>
-                    
+
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Enviar</button>
+                <div class="alert alert-danger" ng-if="listErros && listErros.length" role="alert">
+                    <div ng-repeat="erro in listErros">{{erro.text}}</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Salvar</button>
             </form>
         </div>
     </div>

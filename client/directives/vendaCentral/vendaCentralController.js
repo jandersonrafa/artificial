@@ -14,15 +14,43 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		});
 
 	$scope.createVendaCentral = function () {
-		console.log($scope.vendaCentral)
-		$http.post(BASE_URL + '/api/create', $scope.vendaCentral).then(
-			function (response) {
-				$scope.vendaCentral = {}; // clear the form so our user is ready to enter another
-				$scope.listVendaCentral = response.data;
-				console.log(response);
-			}, function (error) {
-				console.log('Error: ' + error.data);
-			});
+		$scope.listErros = []
+		if (isTodosCamposPreenchidos($scope.vendaCentral)) {
+			$http.post(BASE_URL + '/api/create', $scope.vendaCentral).then(
+				function (response) {
+					$scope.vendaCentral = {}; // clear the form so our user is ready to enter another
+					$scope.listVendaCentral = response.data;
+					console.log(response);
+				}, function (error) {
+					console.log('Error: ' + error.data);
+				});
+		} else {
+			$scope.listErros.push({ text: 'Existem campos não preenchidos!' })
+		}
+	}
+	isTodosCamposPreenchidos = function (vendaCentral) {
+		console.log(vendaCentral)
+		if (vendaCentral.tpCentralPreferencia == null) {
+			return false
+		};
+		if (vendaCentral.tpCentralIndicada == null) {
+			return false
+		};
+		if (vendaCentral.tpQtdFuncionarios == null) {
+			return false
+		};
+		if (vendaCentral.tpQtdLigacoesConcorrentes == null) { return false };
+		if (vendaCentral.tpQtdToquesSimultaneos == null) { return false };
+		if (vendaCentral.tpQtdHorasGravacao == null) { return false };
+		if (vendaCentral.blDdr == null) { return false };
+		if (vendaCentral.blPriorizaSolucao == null) { return false };
+		if (vendaCentral.blComputadorAtendente == null) { return false };
+		if (vendaCentral.blSecretariaEletronica == null) { return false };
+		if (vendaCentral.blFuncaoRonda == null) { return false };
+		if (vendaCentral.blFluxoAltoFiliais == null) { return false };
+		if (vendaCentral.blFuncionarioRamalCelular == null) { return false };
+
+		return true;
 	}
 
 	$scope.deletevendaCentral = function (id) {
@@ -32,7 +60,6 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 			}, function (error) {
 				console.log('Error: ' + error.data);
 			});
-
 	}
 
 	$scope.optionsTpQtdFuncionarios = [
@@ -43,10 +70,16 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: 'Mais que 128 pessoas', value: 'Q+128' }
 	];
 
-	$scope.optionsTpEquipamentoPreferencia = [
-		{ text: 'Intelbras', value: 'Intelbras' }
-		, { text: 'Panasonic', value: 'Panasonic' }
-		, { text: 'Digistar', value: 'Digistar' }
+	$scope.optionsTpCentralIndicada = [
+		{ text: 'Intelbras', value: 'INTE' }
+		, { text: 'Panasonic', value: 'PANA' }
+		, { text: 'Digistar', value: 'DIGI' }
+	];
+
+	$scope.optionsTpCentralPreferencia = [
+		{ text: 'Intelbras', value: 'INTE' }
+		, { text: 'Panasonic', value: 'PANA' }
+		, { text: 'Digistar', value: 'DIGI' }
 		, { text: 'Sem Preferencia', value: 'Sem Preferencia' }
 	];
 
