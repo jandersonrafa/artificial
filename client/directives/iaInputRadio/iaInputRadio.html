@@ -1,8 +1,10 @@
-<div>
-    {{ text }} <br>
-    <label ng-repeat="option in options">
-        <input type="radio" ng-value="option.value" ng-name="$parent.name" ng-model="$parent.model" >
-        {{ option.text }}
-    </label>
+<div class="card text-dark bg-white mb-3">
+    <div class="card-header"><b>{{ text }}</b></div>
+    <div class="card-body">
+        <label ng-repeat="option in options" class="custom-control custom-radio">
+                <input id="radio1" ng-value="option.value" ng-name="$parent.name" ng-model="$parent.model"type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description"> {{ option.text }}</span>
+        </label>
+    </div>
 </div>
-<br><br>

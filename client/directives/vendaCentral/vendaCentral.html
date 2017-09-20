@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center col-sm-10">
         <h1>Informação sobre a necessidade do Cliente <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
     </div>
     <div id="vendaCentral-list" class="row">
@@ -17,20 +17,14 @@
     </div>
 
     <div id="vendaCentral-form" class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
+        <div class="col-sm-10 col-sm-offset-2 text-center">
             <form>
                 <div class="form-group">
                     <ia-input-radio 
                         text="Qual quantidade de funcionários que necessitam de aparelhos telefônicos?"
                         model="vendaCentral.tpQtdFuncionarios"
                         name="tpQtdFuncionarios"
-                        options="[ 
-                                    { value:'P12', text:'12 pessoas'} 
-                                    , { value:'P32', text:'32 pessoas'} 
-                                    , { value:'P64', text:'64 pessoas'} 
-                                    , { value:'P128', text:'128 pessoas'} 
-                                    , { value:'P+128', text:'Mais que 128 pessoas'} 
-                                ]"
+                        options="optionsTpQtdFuncionarios"
                         >
                     </ia-input-radio>
                     <ia-input-radio 
@@ -42,12 +36,7 @@
                         text="Qual marca de equipamento tem preferencia?"
                         model="vendaCentral.dsEquipamentoPreferencia"
                         name="dsEquipamentoPreferencia"
-                        options="[ 
-                                    { text: 'Intelbras', value:'Intelbras'} 
-                                    , { text: 'Panasonic', value:'Panasonic'} 
-                                    , { text: 'Digistar', value:'Digistar'} 
-                                    , { text: 'Sem Preferencia', value:'Sem Preferencia'} 
-                                ]">
+                        options="optionsDsEquipamentoPreferencia">
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Prioriza a solução do problema independente do valor?"
@@ -58,12 +47,7 @@
                         text="Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?"
                         model="vendaCentral.tpQtdToquesSimultaneos"
                         name="tpQtdToquesSimultaneos"
-                        options="[ 
-                                    { text: 'Até 6', value:'QT6'} 
-                                    , { text: 'Até 10', value:'QT10'} 
-                                    , { text: 'Até 30', value:'QT30'} 
-                                    , { text: 'Mais que 30', value:'QT+30'} 
-                                ]">
+                        options="optionsTpQtdToquesSimultaneos">
                     </ia-input-radio>
 
                     <ia-input-radio 
@@ -81,12 +65,7 @@
                         text="Qual volume total de gravação de recados em tempo é necessário?"
                         model="vendaCentral.tpQtdHorasGravacao"
                         name="tpQtdHorasGravacao"
-                        options="[ 
-                                    { text: '1 Hora', value:'H1'} 
-                                    , { text: '2 Horas', value:'H2'} 
-                                    , { text: '3 Horas', value:'H4'} 
-                                    , { text: 'Mais que 4 horas', value:'H+4'} 
-                                ]">
+                        options="optionsTpQtdHorasGravacao">
                     </ia-input-radio>
                     
                     <ia-input-radio 
@@ -111,13 +90,7 @@
                     text="Quantas ligações externas podem ser recebidas no mesmo instante?"
                     model="vendaCentral.tpQtdLigacoesConcorrentes"
                     name="tpQtdLigacoesConcorrentes"
-                    options="[ 
-                                { text: 'Até 4', value:'QT4'} 
-                                , { text: 'Até 8', value:'QT8'} 
-                                , { text: 'Até 12', value:'QT12'} 
-                                , { text: 'Até 16', value:'QT16'} 
-                                , { text: 'Mais que 16', value:'QT+16'} 
-                            ]">
+                    options="optionsTpQtdLigacoesConcorrentes">
                 </ia-input-radio>
                     
                 </div>

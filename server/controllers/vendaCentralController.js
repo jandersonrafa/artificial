@@ -22,10 +22,7 @@ module.exports = function (app) {
 	app.post(BASE_URL + '/api/create', function (req, res) {
 
 		// create a todo, information comes from AJAX request from Angular
-		VendaCentral.create({
-			dsEquipamentoPreferencia: req.body.dsEquipamentoPreferencia,
-			done: false
-		}, function (err, todo) {
+		VendaCentral.create(req.body, function (err, todo) {
 			if (err)
 				res.send(err);
 
