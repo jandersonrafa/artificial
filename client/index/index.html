@@ -34,8 +34,21 @@
 			overflow-y: scroll;
 		}
 
-		body {
-			padding-top: 50px;
+		.header a {
+			color: white;
+		}
+
+		.header .active {
+			color: #bcbcbc;
+		}
+
+		.header a:hover {
+			color: #bcbcbc;
+		}
+
+		.logo {
+			color: white;
+			font-family: cursive;
 		}
 
 		#todo-list {
@@ -49,10 +62,26 @@
 
 </head>
 
-<body>
-	
-	<div ng-app="mainApp">
-		<teste></teste>
+<body ng-app="mainApp">
+
+	<div ng-controller="headerController">
+		<nav class="header navbar navbar-dark bg-dark">
+			<div class="logo col-md-2">
+				<h3>Central</h3>
+			</div>
+			<div class="col-md-10">
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link" href=""ng-click="redirectHome()">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="" ng-click="redirectVendaCentral()">Venda Central</a>
+					</li>
+			</div>
+			<!-- Navbar content -->
+		</nav>
+	</div>
+	<div class="container">
 		<div ui-view></div>
 	</div>
 </body>

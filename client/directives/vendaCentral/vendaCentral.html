@@ -1,21 +1,4 @@
 <div class="container">
-
-    <div class="jumbotron text-center col-sm-10">
-        <h1>Informação sobre a necessidade do Cliente <span class="badge badge-secondary">{{ listVendaCentral.length }}</span></h1>
-    </div>
-    <div id="vendaCentral-list" class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            
-            <div class="checkbox" ng-repeat="vendaCentral in listVendaCentral">
-                <label>
-						<input type="checkbox" ng-click="deletevendaCentral(vendaCentral._id)"> {{ vendaCentral.dsEquipamentoPreferencia }}
-					</label>
-            </div>
-            
-
-        </div>
-    </div>
-
     <div id="vendaCentral-form" class="row">
         <div class="col-sm-10 col-sm-offset-2 text-center">
             <form>

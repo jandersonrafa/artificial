@@ -14,3 +14,12 @@ mainApp.config(function ($stateProvider, $urlRouterProvider) {
 	})
 
 });
+
+mainApp.controller('headerController', ['$rootScope','$scope', '$state', function ($rootScope, $scope, $state) {
+	$scope.redirectHome = function () {
+		$state.go('home')
+	}
+	$scope.redirectVendaCentral = function () {
+		$state.go('venda-central')
+	}
+}]);

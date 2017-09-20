@@ -1,9 +1,8 @@
 var mainApp = angular.module('mainApp');
 
-mainApp.controller('vendaCentralController', function ($scope, $http) {
+mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	const BASE_URL = 'venda-central';
 	$scope.message = "$scope.message : from vendaCentralController";
-
 	$scope.vendaCentral = {};
 
 	// busca lista de vendaCentral
