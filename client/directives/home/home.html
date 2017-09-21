@@ -1,37 +1,95 @@
 <div class="container">
-
-    <div class="jumbotron text-center">
-        <h1>Criação de objetos home <span class="badge badge-secondary">{{ listHome.length }}</span></h1>
-    </div>
-    <div id="home-list" class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            
-            <div class="checkbox" ng-repeat="home in listHome">
-                <label>
-						<input type="checkbox" ng-click="deleteHome(home._id)"> {{ home.dsEquipamentoPreferencial }}
-				</label>
-            </div>
-
-        </div>
-    </div>
-
     <div id="home-form" class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
+        <div class="col-sm-12  text-center">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever"
-                        ng-model="formData.text">
-                        
-                </div>
+                    <br><h2>Perguntas para poder sugerir um equipamento</h2><br>
+                    <ia-input-radio 
+                        text="Qual quantidade de funcionários que necessitam de aparelhos telefônicos?"
+                        model="vendaCentral.tpQtdFuncionarios"
+                        required name="tpQtdFuncionarios"
+                        options="optionsTpQtdFuncionarios"
+                        >
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)?"
+                        model="vendaCentral.blDdr"
+                        required name="blDdr">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Qual marca de equipamento tem preferencia?"
+                        model="vendaCentral.dsEquipamentoPreferencia"
+                        name="dsEquipamentoPreferencia"
+                        options="optionsDsEquipamentoPreferencia">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Prioriza a solução do problema independente do valor?"
+                        model="vendaCentral.blPriorizaSolucao"
+                        name="blPriorizaSolucao">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?"
+                        model="vendaCentral.tpQtdToquesSimultaneos"
+                        name="tpQtdToquesSimultaneos"
+                        options="optionsTpQtdToquesSimultaneos">
+                    </ia-input-radio>
 
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="createHome()">Add</button>
+                    <ia-input-radio 
+                        text="Atendente (Telefonista) possui computador?"
+                        model="vendaCentral.blComputadorAtendente"
+                        name="blComputadorAtendente">
+                    </ia-input-radio>
+                    <ia-input-radio 
+                        text="Necessita de secretária eletrônica para armazenar recados?"
+                        model="vendaCentral.blSecretariaEletronica"
+                        name="blSecretariaEletronica">
+                    </ia-input-radio>
+
+                    <ia-input-radio 
+                        text="Qual volume total de gravação de recados em tempo é necessário?"
+                        model="vendaCentral.tpQtdHorasGravacao"
+                        name="tpQtdHorasGravacao"
+                        options="optionsTpQtdHorasGravacao">
+                    </ia-input-radio>
+                    
+                    <ia-input-radio 
+                    text="Possui ronda de funcionários?"
+                    model="vendaCentral.blFuncaoRonda"
+                    name="blFuncaoRonda">
+                </ia-input-radio>
+                
+                <ia-input-radio 
+                    text="Existe muito fluxo de comunicação telefônica entre filiais?"
+                    model="vendaCentral.blFluxoAltoFiliais"
+                    name="blFluxoAltoFiliais">
+                </ia-input-radio>
+                    
+                <ia-input-radio 
+                    text="Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?"
+                    model="vendaCentral.blFuncionarioRamalCelular"
+                    name="blFuncionarioRamalCelular">
+                </ia-input-radio>
+                        
+                <ia-input-radio 
+                    text="Quantas ligações externas podem ser recebidas no mesmo instante?"
+                    model="vendaCentral.tpQtdLigacoesConcorrentes"
+                    name="tpQtdLigacoesConcorrentes"
+                    options="optionsTpQtdLigacoesConcorrentes">
+                </ia-input-radio>
+
+                <div class="alert alert-danger" ng-if="listErros && listErros.length" role="alert">
+                        <div ng-repeat="erro in listErros">{{erro.text}}</div>
+                    
+                </div>
+                <button type="submit" class="btn btn-dark btn-lg" ng-click="createVendaCentral()">Enviar</button>
+                <br><br>
             </form>
         </div>
     </div>
-
-    <div class="text-center text-muted">
+    
+    <!--<div class="text-center text-muted">
         <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
         <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
-    </div>
+    </div>-->
 
 </div>
