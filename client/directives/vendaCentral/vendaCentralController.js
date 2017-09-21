@@ -2,6 +2,7 @@ var mainApp = angular.module('mainApp');
 
 mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	const BASE_URL = 'venda-central';
+	const BASE_URL_EQUIPAMENTO_CENTRAL = 'equipamento-central';
 	$scope.message = "$scope.message : from vendaCentralController";
 	$scope.vendaCentral = {};
 
@@ -12,6 +13,30 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		}, function (error) {
 			console.log('Error: ' + error.data);
 		});
+
+	$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/all-marcas').then(
+		function (response) {
+			$scope.listMarcas = response.data;
+			$scope.listMarcasPreferencia = [];
+			$scope.listMarcas.forEach(function(marca){
+				$scope.listMarcasPreferencia.push({text:marca, value:marca});
+			})
+		}, function (error) {
+			console.log('Error: ' + error.data);
+		});
+
+		
+	$scope.changeMarca= function() {
+		$scope.vendaCentral.equipamentoIndicado.dsEquipamento = null
+		$scope.listVendaCentral = []
+		$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/equipamentos-by-marca/'+ $scope.vendaCentral.equipamentoIndicado.tpMarca).then(
+		function (response) {
+			$scope.listEquipamentos = response.data;
+			console.log($scope)
+		}, function (error) {
+			console.log('Error: ' + error.data);
+		});
+	}
 
 	$scope.createVendaCentral = function () {
 		$scope.listErros = []
@@ -30,10 +55,10 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	}
 	isTodosCamposPreenchidos = function (vendaCentral) {
 		console.log(vendaCentral)
-		if (vendaCentral.tpCentralPreferencia == null) {
+		if (vendaCentral.tpMarcaPreferencia == null) {
 			return false
 		};
-		if (vendaCentral.tpCentralIndicada == null) {
+		if (vendaCentral.equipamentoIndicado == null || vendaCentral.equipamentoIndicado.tpMarca == null || vendaCentral.equipamentoIndicado.dsEquipamento == null) {
 			return false
 		};
 		if (vendaCentral.tpQtdFuncionarios == null) {
@@ -68,19 +93,6 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: '64 pessoas', value: 'Q64' }
 		, { text: '128 pessoas', value: 'Q128' }
 		, { text: 'Mais que 128 pessoas', value: 'Q+128' }
-	];
-
-	$scope.optionsTpCentralIndicada = [
-		{ text: 'Intelbras', value: 'INTE' }
-		, { text: 'Panasonic', value: 'PANA' }
-		, { text: 'Digistar', value: 'DIGI' }
-	];
-
-	$scope.optionsTpCentralPreferencia = [
-		{ text: 'Intelbras', value: 'INTE' }
-		, { text: 'Panasonic', value: 'PANA' }
-		, { text: 'Digistar', value: 'DIGI' }
-		, { text: 'Sem Preferencia', value: 'Sem Preferencia' }
 	];
 
 	$scope.optionsTpQtdToquesSimultaneos = [

@@ -17,9 +17,9 @@
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Qual marca de equipamento tem preferencia?"
-                        model="vendaCentral.tpCentralPreferencia"
-                        name="tpCentralPreferencia"
-                        options="optionsTpCentralPreferencia">
+                        model="vendaCentral.tpMarcaPreferencia"
+                        name="tpMarcaPreferencia"
+                        options="listMarcasPreferencia">
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Prioriza a solução do problema independente do valor?"
@@ -78,14 +78,22 @@
             <br>
             <hr>
 
-                <ia-input-radio 
-                    text="Equipamento adequado:"
-                    model="vendaCentral.tpCentralIndicada"
-                    name="tpCentralIndicada"
-                    options="optionsTpCentralIndicada">
-                </ia-input-radio>
-
+                <div class="card text-dark bg-white mb-3">
+                    <div class="card-header"><b>Marca/Equipamento Indicado:</b></div>
+                    <div class="card-body row">
+                        <div class="col-md-6">
+                            <select ng-change="changeMarca()" ng-model="vendaCentral.equipamentoIndicado.tpMarca" class="form-control" id="tpMarcaIndicada">
+                            <option ng-repeat="marca in listMarcas">{{marca}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-disabled="!(listEquipamentos && listEquipamentos.length)" ng-model="vendaCentral.equipamentoIndicado.dsEquipamento" class="form-control" id="tpMarcaIndicada">
+                            <option ng-repeat="equipamento in listEquipamentos">{{equipamento}}</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="alert alert-danger" ng-if="listErros && listErros.length" role="alert">
                     <div ng-repeat="erro in listErros">{{erro.text}}</div>
                 </div>

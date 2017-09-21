@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('VendaCentral', {
-	tpCentralIndicada: String,
-	tpCentralPreferencia: String,
+	equipamentoIndicado: {
+		tpMarca: String,
+		dsEquipamento: String,
+	},
+	tpMarcaPreferencia: String,
 	tpQtdFuncionarios : String,
 	tpQtdLigacoesConcorrentes: String,
 	tpQtdToquesSimultaneos: String,
