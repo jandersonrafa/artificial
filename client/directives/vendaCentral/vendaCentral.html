@@ -13,17 +13,13 @@
                     <ia-input-radio 
                         text="Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)?"
                         model="vendaCentral.blDdr"
+                        options="optionsTpSimNao"
                         name="blDdr">
-                    </ia-input-radio>
-                    <ia-input-radio 
-                        text="Qual marca de equipamento tem preferencia?"
-                        model="vendaCentral.tpMarcaPreferencia"
-                        name="tpMarcaPreferencia"
-                        options="listMarcasPreferencia">
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Prioriza a solução do problema independente do valor?"
                         model="vendaCentral.blPriorizaSolucao"
+                        options="optionsTpSimNao"
                         name="blPriorizaSolucao">
                     </ia-input-radio>
                     <ia-input-radio 
@@ -36,11 +32,13 @@
                     <ia-input-radio 
                         text="Atendente (Telefonista) possui computador?"
                         model="vendaCentral.blComputadorAtendente"
+                        options="optionsTpSimNao"
                         name="blComputadorAtendente">
                     </ia-input-radio>
                     <ia-input-radio 
                         text="Necessita de secretária eletrônica para armazenar recados?"
                         model="vendaCentral.blSecretariaEletronica"
+                        options="optionsTpSimNao"
                         name="blSecretariaEletronica">
                     </ia-input-radio>
 
@@ -54,18 +52,21 @@
                     <ia-input-radio 
                     text="Possui ronda de funcionários?"
                     model="vendaCentral.blFuncaoRonda"
+                    options="optionsTpSimNao"
                     name="blFuncaoRonda">
                 </ia-input-radio>
                 
                 <ia-input-radio 
                     text="Existe muito fluxo de comunicação telefônica entre filiais?"
                     model="vendaCentral.blFluxoAltoFiliais"
+                    options="optionsTpSimNao"
                     name="blFluxoAltoFiliais">
                 </ia-input-radio>
                     
                 <ia-input-radio 
                     text="Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?"
                     model="vendaCentral.blFuncionarioRamalCelular"
+                    options="optionsTpSimNao"
                     name="blFuncionarioRamalCelular">
                 </ia-input-radio>
                 

@@ -5,7 +5,6 @@ module.exports = mongoose.model('VendaCentral', {
 		tpMarca: String,
 		dsEquipamento: String,
 	},
-	tpMarcaPreferencia: String,
 	tpQtdFuncionarios : String,
 	tpQtdLigacoesConcorrentes: String,
 	tpQtdToquesSimultaneos: String,

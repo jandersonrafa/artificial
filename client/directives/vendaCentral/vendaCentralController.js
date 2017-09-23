@@ -17,25 +17,20 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/all-marcas').then(
 		function (response) {
 			$scope.listMarcas = response.data;
-			$scope.listMarcasPreferencia = [];
-			$scope.listMarcas.forEach(function(marca){
-				$scope.listMarcasPreferencia.push({text:marca, value:marca});
-			})
 		}, function (error) {
 			console.log('Error: ' + error.data);
 		});
 
-		
-	$scope.changeMarca= function() {
+	$scope.changeMarca = function () {
 		$scope.vendaCentral.equipamentoIndicado.dsEquipamento = null
 		$scope.listVendaCentral = []
-		$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/equipamentos-by-marca/'+ $scope.vendaCentral.equipamentoIndicado.tpMarca).then(
-		function (response) {
-			$scope.listEquipamentos = response.data;
-			console.log($scope)
-		}, function (error) {
-			console.log('Error: ' + error.data);
-		});
+		$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/equipamentos-by-marca/' + $scope.vendaCentral.equipamentoIndicado.tpMarca).then(
+			function (response) {
+				$scope.listEquipamentos = response.data;
+				console.log($scope)
+			}, function (error) {
+				console.log('Error: ' + error.data);
+			});
 	}
 
 	$scope.createVendaCentral = function () {
@@ -55,15 +50,8 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	}
 	isTodosCamposPreenchidos = function (vendaCentral) {
 		console.log(vendaCentral)
-		if (vendaCentral.tpMarcaPreferencia == null) {
-			return false
-		};
-		if (vendaCentral.equipamentoIndicado == null || vendaCentral.equipamentoIndicado.tpMarca == null || vendaCentral.equipamentoIndicado.dsEquipamento == null) {
-			return false
-		};
-		if (vendaCentral.tpQtdFuncionarios == null) {
-			return false
-		};
+		if (vendaCentral.equipamentoIndicado == null || vendaCentral.equipamentoIndicado.tpMarca == null || vendaCentral.equipamentoIndicado.dsEquipamento == null) { return false };
+		if (vendaCentral.tpQtdFuncionarios == null) { return false };
 		if (vendaCentral.tpQtdLigacoesConcorrentes == null) { return false };
 		if (vendaCentral.tpQtdToquesSimultaneos == null) { return false };
 		if (vendaCentral.tpQtdHorasGravacao == null) { return false };
@@ -92,21 +80,21 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: '32 pessoas', value: 'Q32' }
 		, { text: '64 pessoas', value: 'Q64' }
 		, { text: '128 pessoas', value: 'Q128' }
-		, { text: 'Mais que 128 pessoas', value: 'Q+128' }
+		, { text: 'Mais que 128 pessoas', value: 'Q128M' }
 	];
 
 	$scope.optionsTpQtdToquesSimultaneos = [
 		{ text: 'Até 6', value: 'Q6' }
 		, { text: 'Até 10', value: 'Q10' }
 		, { text: 'Até 30', value: 'Q30' }
-		, { text: 'Mais que 30', value: 'Q+30' }
+		, { text: 'Mais que 30', value: 'Q30M' }
 	];
 
 	$scope.optionsTpQtdHorasGravacao = [
 		{ text: '1 Hora', value: 'Q1' }
 		, { text: '2 Horas', value: 'Q2' }
 		, { text: '3 Horas', value: 'Q4' }
-		, { text: 'Mais que 4 horas', value: 'Q+4' }
+		, { text: 'Mais que 4 horas', value: 'Q4M' }
 	];
 
 	$scope.optionsTpQtdLigacoesConcorrentes = [
@@ -114,6 +102,11 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: 'Até 8', value: 'Q8' }
 		, { text: 'Até 12', value: 'Q12' }
 		, { text: 'Até 16', value: 'Q16' }
-		, { text: 'Mais que 16', value: 'Q+16' }
+		, { text: 'Mais que 16', value: 'Q16M' }
+	];
+
+	$scope.optionsTpSimNao = [
+		{ text: 'Sim', value: true }
+		, { text: 'Não', value: false }
 	];
 });

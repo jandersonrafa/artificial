@@ -1,15 +1,19 @@
 var mainApp = angular.module('mainApp');
 
 mainApp.controller('homeController', function ($scope, $http) {
-	const BASE_URL = 'venda-central';
+	const BASE_URL = 'home';
+	const BASE_URL_EQUIPAMENTO_CENTRAL = 'equipamento-central';
 	$scope.message = "$scope.message : from homeController";
 
 	$scope.formData = {};
 
-	// busca lista de home
-	$http.get(BASE_URL + '/api/find').then(
+
+	$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/all-marcas').then(
 		function (response) {
-			$scope.listVendaCentral = response.data;
+			$scope.listMarcasPreferencia = [{ text: "Qualquer", value: "Qualquer" }];
+			response.data.forEach(function (marca) {
+				$scope.listMarcasPreferencia.push({ text: marca, value: marca });
+			})
 		}, function (error) {
 			console.log('Error: ' + error.data);
 		});
@@ -17,11 +21,11 @@ mainApp.controller('homeController', function ($scope, $http) {
 	$scope.createVendaCentral = function () {
 		$scope.listErros = []
 		if (isTodosCamposPreenchidos($scope.vendaCentral)) {
-			$http.post(BASE_URL + '/api/create', $scope.vendaCentral).then(
+			$http.post(BASE_URL + '/api/find-equipamentos-indicados', $scope.vendaCentral).then(
 				function (response) {
-					$scope.vendaCentral = {}; // clear the form so our user is ready to enter another
-					$scope.listVendaCentral = response.data;
-					console.log(response);
+					$('#modal-sugestao').modal('toggle')
+					$scope.listSugestao = response.data
+					console.log(response)
 				}, function (error) {
 					console.log('Error: ' + error.data);
 				});
@@ -32,18 +36,9 @@ mainApp.controller('homeController', function ($scope, $http) {
 
 	isTodosCamposPreenchidos = function (vendaCentral) {
 		console.log(vendaCentral)
-		if(vendaCentral == null){
-			return false
-		}
-		if (vendaCentral.tpCentralPreferencia == null) {
-			return false
-		};
-		if (vendaCentral.tpCentralIndicada == null) {
-			return false
-		};
-		if (vendaCentral.tpQtdFuncionarios == null) {
-			return false
-		};
+		if (vendaCentral == null) { return false }
+		if (vendaCentral.tpMarcaPreferencia == null) { return false };
+		if (vendaCentral.tpQtdFuncionarios == null) { return false };
 		if (vendaCentral.tpQtdLigacoesConcorrentes == null) { return false };
 		if (vendaCentral.tpQtdToquesSimultaneos == null) { return false };
 		if (vendaCentral.tpQtdHorasGravacao == null) { return false };
@@ -73,28 +68,21 @@ mainApp.controller('homeController', function ($scope, $http) {
 		, { text: '32 pessoas', value: 'Q32' }
 		, { text: '64 pessoas', value: 'Q64' }
 		, { text: '128 pessoas', value: 'Q128' }
-		, { text: 'Mais que 128 pessoas', value: 'Q+128' }
-	];
-
-	$scope.optionsTpEquipamentoPreferencia = [
-		{ text: 'Intelbras', value: 'Intelbras' }
-		, { text: 'Panasonic', value: 'Panasonic' }
-		, { text: 'Digistar', value: 'Digistar' }
-		, { text: 'Sem Preferencia', value: 'Sem Preferencia' }
+		, { text: 'Mais que 128 pessoas', value: 'Q128M' }
 	];
 
 	$scope.optionsTpQtdToquesSimultaneos = [
 		{ text: 'Até 6', value: 'Q6' }
 		, { text: 'Até 10', value: 'Q10' }
 		, { text: 'Até 30', value: 'Q30' }
-		, { text: 'Mais que 30', value: 'Q+30' }
+		, { text: 'Mais que 30', value: 'Q30M' }
 	];
 
 	$scope.optionsTpQtdHorasGravacao = [
 		{ text: '1 Hora', value: 'Q1' }
 		, { text: '2 Horas', value: 'Q2' }
 		, { text: '3 Horas', value: 'Q4' }
-		, { text: 'Mais que 4 horas', value: 'Q+4' }
+		, { text: 'Mais que 4 horas', value: 'Q4M' }
 	];
 
 	$scope.optionsTpQtdLigacoesConcorrentes = [
@@ -102,6 +90,11 @@ mainApp.controller('homeController', function ($scope, $http) {
 		, { text: 'Até 8', value: 'Q8' }
 		, { text: 'Até 12', value: 'Q12' }
 		, { text: 'Até 16', value: 'Q16' }
-		, { text: 'Mais que 16', value: 'Q+16' }
+		, { text: 'Mais que 16', value: 'Q16M' }
+	];
+
+	$scope.optionsTpSimNao = [
+		{ text: 'Sim', value: true }
+		, { text: 'Não', value: false }
 	];
 });
