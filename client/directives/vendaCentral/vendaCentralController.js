@@ -48,6 +48,13 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 			$scope.listErros.push({ text: 'Existem campos não preenchidos!' })
 		}
 	}
+
+	$scope.vizualizarCaso = function (vendaCentral) {
+		$scope.vendaCentralDetalhar = vendaCentral
+			$('#modal-caso').modal('toggle')
+			console.log(vendaCentral)
+	}
+
 	isTodosCamposPreenchidos = function (vendaCentral) {
 		console.log(vendaCentral)
 		if (vendaCentral.equipamentoIndicado == null || vendaCentral.equipamentoIndicado.tpMarca == null || vendaCentral.equipamentoIndicado.dsEquipamento == null) { return false };
@@ -73,6 +80,7 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 			}, function (error) {
 				console.log('Error: ' + error.data);
 			});
+			$('#modal-caso').modal('hide')
 	}
 
 	$scope.optionsTpQtdFuncionarios = [

@@ -1,6 +1,8 @@
 <div class="container">
     <div id="vendaCentral-form" class="row">
-        <div class="col-sm-10 col-sm-offset-2 text-center">
+            
+        <div class="col-sm-8 col-sm-offset-2 text-center ">   
+                             
             <form>
                 <div class="form-group">
                     <ia-input-radio 
@@ -101,6 +103,116 @@
                 <button type="submit" class="btn btn-primary btn-lg" ng-click="createVendaCentral()">Salvar</button>
             </form>
         </div>
+   
+    </div>
+    
+    <div class="col-sm-4 col-sm-offset-2 text-center">
+        
+    <div class="card mb-3"></div>
+            <div class="card-header text-white bg-dark mb-3"><h3><b>Casos</b></h3></div>
+            <div class="card-body text-black bg-white">
+                    <div ng-repeat="vendaCentral in listVendaCentral">
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="vizualizarCaso(vendaCentral)">Caso {{$index}}</button>
+                    <br><br>
+                    </div>
+                    
+                   
+            </div>
+    </div>
+    <div id="modal-caso" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="mySmallModalLabel">Caso</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                             
+                                <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Respostas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Qual quantidade de funcionários que necessitam de aparelhos telefônicos?</th>
+                                        <td>{{vendaCentralDetalhar.tpQtdFuncionarios}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Necessita acesso externo direto a cada setor da empresa?(DDR-Discagem direta Ramal)?</th>
+                                        <td>{{vendaCentralDetalhar.blDdr?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Prioriza a solução do problema independente do valor?</th>
+                                        <td>{{vendaCentralDetalhar.blPriorizaSolucao?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?</th>
+                                        <td>{{vendaCentralDetalhar.tpQtdToquesSimultaneos}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Atendente (Telefonista) possui computador?</th>
+                                        <td>{{vendaCentralDetalhar.blComputadorAtendente?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Necessita de secretária eletrônica para armazenar recados?</th>
+                                        <td>{{vendaCentralDetalhar.blSecretariaEletronica?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Qual volume total de gravação de recados em tempo é necessário?</th>
+                                        <td>{{vendaCentralDetalhar.tpQtdHorasGravacao}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Possui ronda de funcionários?</th>
+                                        <td>{{vendaCentralDetalhar.blFuncaoRonda?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Existe muito fluxo de comunicação telefônica entre filiais?</th>
+                                        <td>{{vendaCentralDetalhar.blFluxoAltoFiliais?'Sim':'Não'}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Existe um grande volume de funcionários que trabalham fora da empresa e necessitam receber ligações?</th>
+                                        <td>{{vendaCentralDetalhar.blFuncionarioRamalCelular?'Sim':'Não'}}</td>
+                                    </tr> 
+
+                                    <tr>
+                                        <th>Quantas ligações externas podem ser recebidas no mesmo instante?</th>
+                                        <td>{{vendaCentralDetalhar.tpQtdLigacoesConcorrentes}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Equipamento Sugerido</th>
+                                        <td>{{vendaCentralDetalhar.equipamentoIndicado.tpMarca}} 
+                                            {{vendaCentralDetalhar.equipamentoIndicado.dsEquipamento}}</td>
+                                    </tr>
+
+                                </tbody>
+                                
+                                </table>
+                                <button type="submit" class="btn btn-primary btn-lg" ng-click="deletevendaCentral(vendaCentralDetalhar._id)">Excluir Caso</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+        
+
     </div>
     
     <!--<div class="text-center text-muted">
