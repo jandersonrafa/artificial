@@ -108,7 +108,7 @@
     
     <div class="col-sm-4 col-sm-offset-2 text-center">
         
-    <div class="card mb-3"></div>
+            <div class="card mb-3"></div>
             <div class="card-header text-white bg-dark mb-3"><h3><b>Casos</b></h3></div>
             <div class="card-body text-black bg-white">
                     <div ng-repeat="vendaCentral in listVendaCentral">
@@ -196,14 +196,14 @@
 
                                     <tr>
                                         <th>Equipamento Sugerido</th>
-                                        <td>{{vendaCentralDetalhar.equipamentoIndicado.tpMarca}} 
+                                        <td>{{vendaCentralDetalhar.equipamentoIndicado.tpMarca}} -
                                             {{vendaCentralDetalhar.equipamentoIndicado.dsEquipamento}}</td>
                                     </tr>
 
                                 </tbody>
                                 
                                 </table>
-                                <button type="submit" class="btn btn-primary btn-lg" ng-click="deletevendaCentral(vendaCentralDetalhar._id)">Excluir Caso</button> 
+                                <button type="submit" class="btn btn-primary btn-lg" ng-click="deleteVendaCentral(vendaCentralDetalhar._id)">Excluir Caso</button> 
                             </div>
                         </div>
                     </div>

@@ -50,9 +50,9 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	}
 
 	$scope.vizualizarCaso = function (vendaCentral) {
-		$scope.vendaCentralDetalhar = vendaCentral
-			$('#modal-caso').modal('toggle')
-			console.log(vendaCentral)
+		$scope.vendaCentralDetalhar = vendaCentral;
+			$('#modal-caso').modal('toggle');
+			
 	}
 
 	isTodosCamposPreenchidos = function (vendaCentral) {
@@ -73,7 +73,7 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		return true;
 	}
 
-	$scope.deletevendaCentral = function (id) {
+	$scope.deleteVendaCentral = function (id) {
 		$http.delete(BASE_URL + '/api/delete/' + id).then(
 			function (response) {
 				$scope.listVendaCentral = response.data;
