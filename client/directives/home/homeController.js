@@ -41,7 +41,6 @@ mainApp.controller('homeController', function ($scope, $http) {
 		if (vendaCentral.tpQtdFuncionarios == null) { return false };
 		if (vendaCentral.tpQtdLigacoesConcorrentes == null) { return false };
 		if (vendaCentral.tpQtdToquesSimultaneos == null) { return false };
-		if (vendaCentral.tpQtdHorasGravacao == null) { return false };
 		if (vendaCentral.blDdr == null) { return false };
 		if (vendaCentral.blPriorizaSolucao == null) { return false };
 		if (vendaCentral.blComputadorAtendente == null) { return false };
@@ -76,13 +75,6 @@ mainApp.controller('homeController', function ($scope, $http) {
 		, { text: 'Até 10', value: 'Q10' }
 		, { text: 'Até 30', value: 'Q30' }
 		, { text: 'Mais que 30', value: 'Q30M' }
-	];
-
-	$scope.optionsTpQtdHorasGravacao = [
-		{ text: '1 Hora', value: 'Q1' }
-		, { text: '2 Horas', value: 'Q2' }
-		, { text: '3 Horas', value: 'Q4' }
-		, { text: 'Mais que 4 horas', value: 'Q4M' }
 	];
 
 	$scope.optionsTpQtdLigacoesConcorrentes = [

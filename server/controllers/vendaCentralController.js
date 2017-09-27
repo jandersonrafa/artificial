@@ -41,15 +41,19 @@ module.exports = function (app) {
 		VendaCentral.remove({
 			_id: req.params._id
 		}, function (err, todo) {
-			if (err)
+			if (err) {
 				res.send(err);
+			} else {
 
-			// get and return all the vendaCentral after you create another
-			VendaCentral.find(function (err, vendaCentral) {
-				if (err)
-					res.send(err)
-				res.json(vendaCentral);
-			});
+				// get and return all the vendaCentral after you create another
+				VendaCentral.find(function (err, vendaCentral) {
+					if (err) {
+						res.send(err)
+					} else {
+						res.json(vendaCentral);
+					}
+				});
+			}
 		});
 	});
 

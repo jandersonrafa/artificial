@@ -7,12 +7,15 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 	$scope.vendaCentral = {};
 
 	// busca lista de vendaCentral
-	$http.get(BASE_URL + '/api/find').then(
-		function (response) {
-			$scope.listVendaCentral = response.data;
-		}, function (error) {
-			console.log('Error: ' + error.data);
-		});
+	$scope.findCasos = function () {
+		$http.get(BASE_URL + '/api/find').then(
+			function (response) {
+				$scope.listVendaCentral = response.data;
+			}, function (error) {
+				console.log('Error: ' + error.data);
+			});
+	}
+	$scope.findCasos();
 
 	$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/all-marcas').then(
 		function (response) {
@@ -23,7 +26,6 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 
 	$scope.changeMarca = function () {
 		$scope.vendaCentral.equipamentoIndicado.dsEquipamento = null
-		$scope.listVendaCentral = []
 		$http.get(BASE_URL_EQUIPAMENTO_CENTRAL + '/api/equipamentos-by-marca/' + $scope.vendaCentral.equipamentoIndicado.tpMarca).then(
 			function (response) {
 				$scope.listEquipamentos = response.data;
@@ -51,8 +53,8 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 
 	$scope.vizualizarCaso = function (vendaCentral) {
 		$scope.vendaCentralDetalhar = vendaCentral;
-			$('#modal-caso').modal('toggle');
-			
+		$('#modal-caso').modal('toggle');
+
 	}
 
 	isTodosCamposPreenchidos = function (vendaCentral) {
@@ -61,7 +63,6 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		if (vendaCentral.tpQtdFuncionarios == null) { return false };
 		if (vendaCentral.tpQtdLigacoesConcorrentes == null) { return false };
 		if (vendaCentral.tpQtdToquesSimultaneos == null) { return false };
-		if (vendaCentral.tpQtdHorasGravacao == null) { return false };
 		if (vendaCentral.blDdr == null) { return false };
 		if (vendaCentral.blPriorizaSolucao == null) { return false };
 		if (vendaCentral.blComputadorAtendente == null) { return false };
@@ -80,7 +81,7 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 			}, function (error) {
 				console.log('Error: ' + error.data);
 			});
-			$('#modal-caso').modal('hide')
+		$('#modal-caso').modal('hide')
 	}
 
 	$scope.optionsTpQtdFuncionarios = [
@@ -96,13 +97,6 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: 'Até 10', value: 'Q10' }
 		, { text: 'Até 30', value: 'Q30' }
 		, { text: 'Mais que 30', value: 'Q30M' }
-	];
-
-	$scope.optionsTpQtdHorasGravacao = [
-		{ text: '1 Hora', value: 'Q1' }
-		, { text: '2 Horas', value: 'Q2' }
-		, { text: '3 Horas', value: 'Q4' }
-		, { text: 'Mais que 4 horas', value: 'Q4M' }
 	];
 
 	$scope.optionsTpQtdLigacoesConcorrentes = [

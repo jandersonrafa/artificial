@@ -8,7 +8,6 @@ module.exports = mongoose.model('VendaCentral', {
 	tpQtdFuncionarios : String,
 	tpQtdLigacoesConcorrentes: String,
 	tpQtdToquesSimultaneos: String,
-	tpQtdHorasGravacao: String,
 	blDdr: Boolean,
 	blPriorizaSolucao: Boolean,
 	blComputadorAtendente: Boolean,

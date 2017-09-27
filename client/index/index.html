@@ -58,6 +58,13 @@
 		#todo-form {
 			margin-bottom: 50px;
 		}
+		.card-body{
+			padding: 0px;
+    		padding-top: 10px;
+		}
+		.card-header{
+			padding:5px;
+		}
 	</style>
 
 </head>
@@ -71,18 +78,16 @@
 			<div class="col-md-10">
 				<ul class="nav">
 					<li class="nav-item">
-						<a class="nav-link" href=""ng-click="redirectHome()">Home</a>
+						<a class="nav-link" href=""ng-click="redirectHome()">Simulador</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="" ng-click="redirectVendaCentral()">Venda Central</a>
+						<a class="nav-link" href="" ng-click="redirectVendaCentral()">Especialista</a>
 					</li>
 			</div>
 			<!-- Navbar content -->
 		</nav>
 	</div>
-	<div class="container">
-		<div ui-view></div>
-	</div>
+	<div ui-view></div>
 </body>
 
 </html>

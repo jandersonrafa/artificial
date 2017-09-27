@@ -1,9 +1,15 @@
+<div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4"><font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Simulador de vendas</font></h1>
+            <font style="vertical-align: inherit;">Responda as perguntas para simular e obter a indicação do equipamento mais indicado para o seu caso!</font>
+        </div>
+    </div>  
 <div class="container">
     <div id="home-form" class="row">
         <div class="col-sm-12  text-center">
             <form>
                 <div class="form-group">
-                    <br><h2>Perguntas para poder sugerir um equipamento</h2><br>
                     <ia-input-radio 
                         text="Qual quantidade de funcionários que necessitam de aparelhos telefônicos?"
                         model="vendaCentral.tpQtdFuncionarios"
@@ -49,13 +55,6 @@
                         name="blSecretariaEletronica">
                     </ia-input-radio>
 
-                    <ia-input-radio 
-                        text="Qual volume total de gravação de recados em tempo é necessário?"
-                        model="vendaCentral.tpQtdHorasGravacao"
-                        name="tpQtdHorasGravacao"
-                        options="optionsTpQtdHorasGravacao">
-                    </ia-input-radio>
-                    
                     <ia-input-radio 
                     text="Possui ronda de funcionários?"
                     model="vendaCentral.blFuncaoRonda"

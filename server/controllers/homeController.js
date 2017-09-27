@@ -24,8 +24,13 @@ module.exports = function (app) {
 				}, this);
 
 				listSugestao.sort(function (a, b) { return b.pcSimilaridade - a.pcSimilaridade });
-
-				res.json(listSugestao); // return all vendaCentral in JSON format
+				var listSugestaoDistinct = [];
+				listSugestao.forEach(function(vd) {
+					if (!listSugestaoDistinct.some(elem => elem.tpMarca ===  vd.tpMarca && elem.dsEquipamento ===  vd.dsEquipamento) && listSugestaoDistinct.length <5 ) {
+						listSugestaoDistinct.push(vd);
+					}
+				});
+				res.json(listSugestaoDistinct); // return all vendaCentral in JSON format
 			}
 		});
 	});
@@ -124,7 +129,6 @@ module.exports = function (app) {
 		var isMarcaIgual = vendaNova.tpMarcaPreferencia === vendaExistente.equipamentoIndicado.tpMarca;
 		var isMarcaQualquer = vendaNova.tpMarcaPreferencia === "Qualquer";
 		pesoTotal += calculaNivelAlto(isMarcaIgual || isMarcaQualquer ? 1 : 0);
-		// var pesoTpQtdHorasGravacao = calculaNivelBaixo(VALOR_ABSOLUTO);
 
 		return pesoTotal;
 	}
@@ -146,7 +150,6 @@ module.exports = function (app) {
 		var pesoTpQtdFuncionarios = calculaNivelMedio(VALOR_ABSOLUTO);
 		var pesoTpQtdLigacoesConcorrentes = calculaNivelMedio(VALOR_ABSOLUTO);
 		var pesoTpQtdToquesSimultaneos = calculaNivelMedio(VALOR_ABSOLUTO);
-		// var pesoTpQtdHorasGravacao = calculaNivelBaixo(VALOR_ABSOLUTO);
 
 		pesoTotal += pesoBlDdr;
 		pesoTotal += pesoBlPriorizaSolucao;
@@ -160,7 +163,6 @@ module.exports = function (app) {
 		pesoTotal += pesoTpQtdFuncionarios;
 		pesoTotal += pesoTpQtdLigacoesConcorrentes;
 		pesoTotal += pesoTpQtdToquesSimultaneos;
-		// pesoTotal += pesoTpQtdHorasGravacao;
 		return pesoTotal;
 	}
 
