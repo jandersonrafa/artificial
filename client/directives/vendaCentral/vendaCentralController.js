@@ -92,6 +92,13 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		, { text: 'Mais que 128 pessoas', value: 'Q128M' }
 	];
 
+	$scope.resolveDominio = function (codigo, options) {
+		if (codigo && options && options.length) {
+			return options.find((tp) => tp.value == codigo).text;
+		}
+		return "";
+	}
+
 	$scope.optionsTpQtdToquesSimultaneos = [
 		{ text: 'Até 6', value: 'Q6' }
 		, { text: 'Até 10', value: 'Q10' }
@@ -111,4 +118,5 @@ mainApp.controller('vendaCentralController', function ($state, $scope, $http) {
 		{ text: 'Sim', value: true }
 		, { text: 'Não', value: false }
 	];
+
 });

@@ -137,7 +137,7 @@
                                 <tbody>
                                     <tr>
                                         <th>Qual quantidade de funcionários que necessitam de aparelhos telefônicos?</th>
-                                        <td>{{vendaCentralDetalhar.tpQtdFuncionarios}}</td>
+                                        <td>{{resolveDominio(vendaCentralDetalhar.tpQtdFuncionarios, optionsTpQtdFuncionarios)}}</td>
                                     </tr>
 
                                     <tr>
@@ -152,7 +152,7 @@
 
                                     <tr>
                                         <th>Qual numero de toques simultâneos (quantidade de ramais que tocaram ao mesmo tempo ao receberem uma ligação)?</th>
-                                        <td>{{vendaCentralDetalhar.tpQtdToquesSimultaneos}}</td>
+                                        <td>{{resolveDominio(vendaCentralDetalhar.tpQtdToquesSimultaneos, optionsTpQtdToquesSimultaneos)}}</td>
                                     </tr>
 
                                     <tr>
@@ -182,7 +182,7 @@
 
                                     <tr>
                                         <th>Quantas ligações externas podem ser recebidas no mesmo instante?</th>
-                                        <td>{{vendaCentralDetalhar.tpQtdLigacoesConcorrentes}}</td>
+                                        <td>{{resolveDominio(vendaCentralDetalhar.tpQtdLigacoesConcorrentes, optionsTpQtdLigacoesConcorrentes)}}</td>
                                     </tr>
 
                                     <tr>
