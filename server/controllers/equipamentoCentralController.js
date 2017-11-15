@@ -1,7 +1,7 @@
 var VendaCentral = require('./../models/VendaCentral');
 
 module.exports = function (app) {
-	const BASE_URL = '/equipamento-central';
+	const BASE_URL = '/api/equipamento-central';
 
 	const listEquipamentoMarca = [
 		{
@@ -43,7 +43,7 @@ module.exports = function (app) {
 			]
 		}
 	]
-	app.get(BASE_URL + '/api/all-marcas', function (req, res) {
+	app.get(BASE_URL + '/all-marcas', function (req, res) {
 		let listMarcas = []
 		listEquipamentoMarca.forEach(function (marca) {
 			listMarcas.push(marca.tpMarca)
