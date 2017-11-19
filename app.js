@@ -52,7 +52,7 @@ function connect(mongoose, dbURI, options = {}) {
 
 connect(mongoose, database.url)
 
-require('./server/controllers/controllers.js')(app);
+require('./server/controllers')(app);
 
 // START THE SERVER
 // =============================================================================
