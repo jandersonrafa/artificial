@@ -2,13 +2,6 @@ var KeywordHelp = require('../models/KeywordHelp');
 
 module.exports = {
 
-	save: function (keywordHelp) {
-		KeywordHelp.create(req.body, function (err, keywordHelp) {
-			if (err)
-				res.send(err);
-		});
-	},
-
 	saveList: function (listKeywordHelp) {
 		KeywordHelp.insertMany(listKeywordHelp, function (err, key) {
 			if (err) {
@@ -19,14 +12,14 @@ module.exports = {
 		});
 	},
 
-	deleteAll: function() {
-		KeywordHelp.remove({}, function(err) {
-            if (err) {
-                console.log("erro ao excluir keywords")
-            } else {
+	deleteAll: function () {
+		KeywordHelp.remove({}, function (err) {
+			if (err) {
+				console.log("erro ao excluir keywords")
+			} else {
 				console.log("excluido todos keywords")
-            }
-        });
+			}
+		});
 	},
 
 	delete: function (id) {
@@ -39,15 +32,7 @@ module.exports = {
 		});
 	},
 
-
 	findAll: function (keywordHelp) {
-		VendaCentral.find(function (err, listKeywordHelp) {
-			if (err)
-				res.send(err)
-			return listKeywordHelp;
-		});
-	},
-
-	update: function (keywordHelp) {
+		return KeywordHelp.find().exec()
 	},
 };
